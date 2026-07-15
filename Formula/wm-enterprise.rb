@@ -40,10 +40,6 @@ class WmEnterprise < Formula
   homepage "https://trywatchmen.cloud"
   version "2.1.7"
 
-  # Enterprise is the superset that REPLACES the community `wm` — one active binary. Take
-  # over the `wm` link even if the community formula owns it.
-  link_overwrite "bin/wm"
-
   on_macos do
     on_arm do
       url "https://trywatchmen.cloud/api/downloads/license-check?platform=mac&version=2.1.7",
@@ -59,6 +55,10 @@ class WmEnterprise < Formula
       sha256 "5a0e864236ad13f7b1892e4d20bc2ceae838a6d3ca75396c47b39ec7dc2d5454"
     end
   end
+
+  # Enterprise is the superset that REPLACES the community `wm` as one active binary; take
+  # over the `wm` link even if the community formula owns it.
+  link_overwrite "bin/wm"
 
   def install
     # The strategy fetches the raw binary (its basename is the S3 object name); install
