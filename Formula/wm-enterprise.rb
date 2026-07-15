@@ -40,6 +40,10 @@ class WmEnterprise < Formula
   homepage "https://trywatchmen.cloud"
   version "2.1.7"
 
+  # Enterprise is the superset that REPLACES the community `wm` — one active binary. Take
+  # over the `wm` link even if the community formula owns it.
+  link_overwrite "bin/wm"
+
   on_macos do
     on_arm do
       url "https://trywatchmen.cloud/api/downloads/license-check?platform=mac&version=2.1.7",
