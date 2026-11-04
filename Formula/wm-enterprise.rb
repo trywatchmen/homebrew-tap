@@ -38,21 +38,21 @@ end
 class WmEnterprise < Formula
   desc "WatchmenCLI Enterprise - fleet security scanner, monitor, and MCP server"
   homepage "https://trywatchmen.cloud"
-  version "3.0.7"
+  version "3.0.8"
 
   on_macos do
     on_arm do
-      url "https://trywatchmen.cloud/api/downloads/license-check?platform=mac&version=3.0.7",
+      url "https://trywatchmen.cloud/api/downloads/license-check?platform=mac&version=3.0.8",
           using: WatchmenLicenseDownloadStrategy
-      sha256 "038627ea11c9a8bce11ee650e6059c143a099a64d37c887524c80a0528258655"
+      sha256 "0769eedb085bdb27680a6abab541993f647e7ad65c4d3fbf7a1d5a46efe28c87"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://trywatchmen.cloud/api/downloads/license-check?platform=linux&version=3.0.7",
+      url "https://trywatchmen.cloud/api/downloads/license-check?platform=linux&version=3.0.8",
           using: WatchmenLicenseDownloadStrategy
-      sha256 "58fd506d843d0626849367481cdc5e46f3216b57fa8a595384016db35a0b8847"
+      sha256 "8c51aafbc14a414fd2e6214a25ca0a941ce2078785a8876c7fce0721da01c225"
     end
   end
 
