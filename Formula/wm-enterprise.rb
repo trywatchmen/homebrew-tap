@@ -38,21 +38,21 @@ end
 class WmEnterprise < Formula
   desc "WatchmenCLI Enterprise - fleet security scanner, monitor, and MCP server"
   homepage "https://trywatchmen.cloud"
-  version "3.0.8"
+  version "3.1.0"
 
   on_macos do
     on_arm do
-      url "https://trywatchmen.cloud/api/downloads/license-check?platform=mac&version=3.0.8",
+      url "https://trywatchmen.cloud/api/downloads/license-check?platform=mac&version=3.1.0",
           using: WatchmenLicenseDownloadStrategy
-      sha256 "0769eedb085bdb27680a6abab541993f647e7ad65c4d3fbf7a1d5a46efe28c87"
+      sha256 "a5592fec9a9ec7d1a2e27c086ae5cf0399b4a70ab52aae267f371810ef3860bd"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://trywatchmen.cloud/api/downloads/license-check?platform=linux&version=3.0.8",
+      url "https://trywatchmen.cloud/api/downloads/license-check?platform=linux&version=3.1.0",
           using: WatchmenLicenseDownloadStrategy
-      sha256 "8c51aafbc14a414fd2e6214a25ca0a941ce2078785a8876c7fce0721da01c225"
+      sha256 "e3ed45523baefd5f3ed63906ab8db8f242e1ccd79a5480de8b3c10ae0bd86836"
     end
   end
 
@@ -64,6 +64,14 @@ class WmEnterprise < Formula
     # The strategy fetches the raw binary (its basename is the S3 object name); install
     # the single downloaded file as `wm`.
     bin.install Dir["*"].first => "wm"
+  end
+
+  def caveats
+    <<~EOS
+      wm keeps its data in ~/.watchmen (scan history, the document index, keys).
+      Before `brew uninstall`, run `wm uninstall` to remove its background service;
+      `wm uninstall --purge` also deletes ~/.watchmen.
+    EOS
   end
 
   test do
