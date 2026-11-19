@@ -38,21 +38,21 @@ end
 class WmEnterprise < Formula
   desc "WatchmenCLI Enterprise - fleet security scanner, monitor, and MCP server"
   homepage "https://trywatchmen.cloud"
-  version "3.2.0"
+  version "3.2.1"
 
   on_macos do
     on_arm do
-      url "https://trywatchmen.cloud/api/downloads/license-check?platform=mac&version=3.2.0",
+      url "https://trywatchmen.cloud/api/downloads/license-check?platform=mac&version=3.2.1",
           using: WatchmenLicenseDownloadStrategy
-      sha256 "03307c5f4a1e243407c33ed24f0b2b1e79263e5dd79f365ede44f7323735c474"
+      sha256 "d77b9af9ce210f5dbb4f0608dc61a6572369b9dbabef83453746b437cfb89af0"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://trywatchmen.cloud/api/downloads/license-check?platform=linux&version=3.2.0",
+      url "https://trywatchmen.cloud/api/downloads/license-check?platform=linux&version=3.2.1",
           using: WatchmenLicenseDownloadStrategy
-      sha256 "48dbe83e31a42c9769a38f3b60e19874d39007852784946cfe871e560462f846"
+      sha256 "19899a4e336cc7c52ceb0a6cbf2726a37e2f6c4cc182e2dc4b48dd83552312de"
     end
   end
 
@@ -68,6 +68,10 @@ class WmEnterprise < Formula
 
   def caveats
     <<~EOS
+      Install the pinned gitleaks the secret scan runs (checked against its sha256);
+      run it again after each upgrade:
+        wm secrets gitleaks-install
+
       wm keeps its data in ~/.watchmen (scan history, the document index, keys).
       Before `brew uninstall`, run `wm uninstall` to remove its background service;
       `wm uninstall --purge` also deletes ~/.watchmen.
